@@ -18,6 +18,26 @@ class Course extends Model
         return $this->hasMany('App\Models\Review');
     }
 
+    public function requirements()
+    {
+        return $this->hasMany('App\Models\Requirements');
+    }
+
+    public function goals()
+    {
+        return $this->hasMany('App\Models\Goal');
+    }
+
+    public function audience()
+    {
+        return $this->hasMany('App\Models\Audience');
+    }
+
+    public function sections()
+    {
+        return $this->hasMany('App\Models\Section');
+    }
+
     //TODO: relacion de uno a muchos inversa entre cursos y usuarios
     // recupera el usuario que ha dictado un curso
     public function teacher()
