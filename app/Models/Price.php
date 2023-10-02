@@ -9,6 +9,8 @@ class Price extends Model
 {
     use HasFactory;
 
+    protected $guarded = ['id'];
+
     //TODO: relacion de uno a muchos
     public function courses()
     {

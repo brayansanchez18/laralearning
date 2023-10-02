@@ -9,6 +9,8 @@ class Comment extends Model
 {
     use HasFactory;
 
+    protected $guarded = ['id'];
+
     //TODO: relacion de tabla polimorfica
     public function commentable()
     {

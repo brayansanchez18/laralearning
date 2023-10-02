@@ -8,6 +8,9 @@ use Illuminate\Database\Eloquent\Model;
 class Profile extends Model
 {
     use HasFactory;
+
+    protected $guarded = ['id'];
+
     //TODO: relacion uno a uno inversa entre perfiles y usuraios
     public function user()
     {
