@@ -7,9 +7,9 @@ use Illuminate\Database\Eloquent\Model;
 
 class Price extends Model
 {
-    use HasFactory;
-
     protected $guarded = ['id'];
+
+    use HasFactory;
 
     //TODO: relacion de uno a muchos
     public function courses()

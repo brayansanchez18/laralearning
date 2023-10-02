@@ -17,7 +17,7 @@ return new class extends Migration
             $table->string('title');
             $table->string('subtitle');
             $table->text('description');
-            $table->enum('sttus', [Course::BORRADOR, Course::REVISION, Course::PUBLICADO])->default(Course::BORRADOR);
+            $table->enum('status', [Course::BORRADOR, Course::REVISION, Course::PUBLICADO])->default(Course::BORRADOR);
             $table->string('slug');
             //TODO: CREAMOS LAS LLAVES FORNEAS
             $table->unsignedBigInteger('user_id')->nullable();
