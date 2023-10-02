@@ -80,6 +80,16 @@ class User extends Authenticatable
         return $this->hasMany('App\Models\Review');
     }
 
+    public function comments()
+    {
+        return $this->hasMany('App\Models\Comment');
+    }
+
+    public function reaction()
+    {
+        return $this->hasMany('App\Models\Reaction');
+    }
+
     //TODO: relacion de muchos a mcuhos entre usuarios y cursos
     // cursos enrolled = muchos usuarios pueden estar matrriculados a muchos cursos
     public function courses_enrolled()
