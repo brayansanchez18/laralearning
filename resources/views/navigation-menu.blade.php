@@ -1,20 +1,60 @@
-<nav x-data="{ open: false }" class="bg-white border-b border-gray-100">
+@auth
+    @php
+        $nav_links =[
+            [
+                'name' => 'Inicio',
+                'route'=> route('home'),
+                'active' => request()->routeIs('home'),
+            ],
+            [
+                'name' => 'Cursos',
+                'route'=> '#',
+                'active' => false,
+            ],
+            [
+                'name' => 'Mis Cursos',
+                'route'=> '#',
+                'active' => false,
+            ],
+        ];
+    @endphp
+@else
+    @php
+        $nav_links =[
+            [
+                'name' => 'Inicio',
+                'route'=> route('home'),
+                'active' => request()->routeIs('home'),
+            ],
+            [
+                'name' => 'Cursos',
+                'route'=> '#',
+                'active' => false,
+            ],
+        ];
+    @endphp
+@endauth
+<nav x-data="{ open: false }" class="bg-white border-b border-gray-100 shadow">
     <!-- Primary Navigation Menu -->
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="flex justify-between h-16">
             <div class="flex">
                 <!-- Logo -->
                 <div class="shrink-0 flex items-center">
-                    <a href="{{ route('dashboard') }}">
+                    <a href="{{ route('home') }}">
                         <x-application-mark class="block h-9 w-auto" />
                     </a>
                 </div>
 
                 <!-- Navigation Links -->
                 <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
-                    <x-nav-link href="{{ route('dashboard') }}" :active="request()->routeIs('dashboard')">
-                        {{ __('Dashboard') }}
+
+                    @foreach ($nav_links as $nav_link)
+                    <x-nav-link href="{{ $nav_link['route'] }}" :active="$nav_link['active']">
+                        {{ $nav_link['name'] }}
                     </x-nav-link>
+                    @endforeach
+
                 </div>
             </div>
 
@@ -73,6 +113,7 @@
 
                 <!-- Settings Dropdown -->
                 <div class="ml-3 relative">
+                    @auth
                     <x-dropdown align="right" width="48">
                         <x-slot name="trigger">
                             @if (Laravel\Jetstream\Jetstream::managesProfilePhotos())
@@ -115,12 +156,16 @@
                                 @csrf
 
                                 <x-dropdown-link href="{{ route('logout') }}"
-                                         @click.prevent="$root.submit();">
+                                        @click.prevent="$root.submit();">
                                     {{ __('Log Out') }}
                                 </x-dropdown-link>
                             </form>
                         </x-slot>
                     </x-dropdown>
+                    @else
+                        <a href="{{ route('login') }}" class="font-semibold text-gray-600 hover:text-gray-900 focus:outline focus:outline-2 focus:rounded-sm focus:outline-red-500">Log in</a>
+                        <a href="{{ route('register') }}" class="ml-4 font-semibold text-gray-600 hover:text-gray-900 focus:outline focus:outline-2 focus:rounded-sm focus:outline-red-500">Register</a>
+                    @endauth
                 </div>
             </div>
 
@@ -139,12 +184,15 @@
     <!-- Responsive Navigation Menu -->
     <div :class="{'block': open, 'hidden': ! open}" class="hidden sm:hidden">
         <div class="pt-2 pb-3 space-y-1">
-            <x-responsive-nav-link href="{{ route('dashboard') }}" :active="request()->routeIs('dashboard')">
-                {{ __('Dashboard') }}
+            @foreach ($nav_links as $nav_link)
+            <x-responsive-nav-link href="{{ $nav_link['route'] }}" :active="$nav_link['active']">
+                {{ $nav_link['name'] }}
             </x-responsive-nav-link>
+            @endforeach
         </div>
 
         <!-- Responsive Settings Options -->
+        @auth
         <div class="pt-4 pb-1 border-t border-gray-200">
             <div class="flex items-center px-4">
                 @if (Laravel\Jetstream\Jetstream::managesProfilePhotos())
@@ -176,7 +224,7 @@
                     @csrf
 
                     <x-responsive-nav-link href="{{ route('logout') }}"
-                                   @click.prevent="$root.submit();">
+                                @click.prevent="$root.submit();">
                         {{ __('Log Out') }}
                     </x-responsive-nav-link>
                 </form>
@@ -215,5 +263,13 @@
                 @endif
             </div>
         </div>
+        @else
+            <x-responsive-nav-link href="{{ route('login') }}" :active="request()->routeIs('login')">
+                Login
+            </x-responsive-nav-link>
+            <x-responsive-nav-link href="{{ route('register') }}" :active="request()->routeIs('register')">
+                Register
+            </x-responsive-nav-link>
+        @endauth
     </div>
 </nav>
