@@ -10,10 +10,20 @@ class Course extends Model
     use HasFactory;
 
     protected $guarded = ['id', 'status'];
+    protected $withCount = ['students', 'reviews'];
 
     const BORRADOR = 1;
     const REVISION = 2;
     const PUBLICADO = 3;
+
+    public function getRatingAttribute()
+    {
+        if ($this->reviews_count) {
+            return round($this->reviews->avg('rating'), 1);
+        } else {
+            return 5;
+        }
+    }
 
     // relacion de uno a muchos entre cursos y usurios
     public function reviews()
@@ -67,10 +77,11 @@ class Course extends Model
 
     //TODO: relacion de muchos a muchos entre cursos y usuarios
     // recupera todos los usuarios que se han inscrito al curso
-    public function student()
+    public function students()
     {
         return $this->belongsToMany('App\Models\User');
     }
+
 
     //relacion de uno a uno polimorfica
     public function image()
