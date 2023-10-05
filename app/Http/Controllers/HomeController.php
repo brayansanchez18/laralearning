@@ -14,7 +14,7 @@ class HomeController extends Controller
         //$courses = Course::all();
         // retcuperamos todos los cursos pero los filtramos solo los que tengan el status de publicado
         //latest() = ordenar los registros que recupere de forma decendente
-        $courses = Course::where('status', '3')->latest('id')->get();
+        $courses = Course::where('status', '3')->latest('id')->get()->take(12);
         return view('welcome', compact('courses'));
     }
 }

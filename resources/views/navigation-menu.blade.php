@@ -8,7 +8,7 @@
             ],
             [
                 'name' => 'Cursos',
-                'route'=> '#',
+                'route'=> route('courses.index'),
                 'active' => false,
             ],
             [
@@ -163,8 +163,8 @@
                         </x-slot>
                     </x-dropdown>
                     @else
-                        <a href="{{ route('login') }}" class="font-semibold text-gray-600 hover:text-gray-900 focus:outline focus:outline-2 focus:rounded-sm focus:outline-red-500">Log in</a>
-                        <a href="{{ route('register') }}" class="ml-4 font-semibold text-gray-600 hover:text-gray-900 focus:outline focus:outline-2 focus:rounded-sm focus:outline-red-500">Register</a>
+                        <a href="{{ route('login') }}" class="font-semibold text-gray-600 hover:text-gray-900 focus:outline focus:outline-2 focus:rounded-sm focus:outline-red-500">Ingresar</a>
+                        <a href="{{ route('register') }}" class="ml-4 font-semibold text-gray-600 hover:text-gray-900 focus:outline focus:outline-2 focus:rounded-sm focus:outline-red-500">Registrarse</a>
                     @endauth
                 </div>
             </div>
@@ -265,10 +265,10 @@
         </div>
         @else
             <x-responsive-nav-link href="{{ route('login') }}" :active="request()->routeIs('login')">
-                Login
+                Ingresar
             </x-responsive-nav-link>
             <x-responsive-nav-link href="{{ route('register') }}" :active="request()->routeIs('register')">
-                Register
+                Registrarse
             </x-responsive-nav-link>
         @endauth
     </div>

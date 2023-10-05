@@ -25,6 +25,11 @@ class Course extends Model
         }
     }
 
+    public function getRouteKeyName()
+    {
+        return 'slug';
+    }
+
     // relacion de uno a muchos entre cursos y usurios
     public function reviews()
     {
