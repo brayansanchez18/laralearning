@@ -9,7 +9,7 @@
             [
                 'name' => 'Cursos',
                 'route'=> route('courses.index'),
-                'active' => false,
+                'active' => request()->routeIs('courses.index'),
             ],
             [
                 'name' => 'Mis Cursos',
@@ -28,8 +28,8 @@
             ],
             [
                 'name' => 'Cursos',
-                'route'=> '#',
-                'active' => false,
+                'route'=> route('courses.index'),
+                'active' => request()->routeIs('courses.index'),
             ],
         ];
     @endphp
