@@ -30,4 +30,10 @@ class CourseController extends Controller
         // le pasamos el valor de la variable a la vista
         return view('courses.show', compact('course', 'similares'));
     }
+
+    public function enrolled(Course $course)
+    {
+        $course->students()->attach(auth()->user()->id);
+        return redirect()->route('courses.status', $course);
+    }
 }

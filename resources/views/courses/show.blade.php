@@ -122,8 +122,8 @@
                     @if($course->price->value == 0)
                         <p class="text-2xl font-bold text-red-700 mt-3 mb-2 text-center">GRATIS</p>
 
-                        <form action="#" method="post">
-                            {{-- @csrf --}}
+                        <form action="{{route('courses.enrolled', $course)}}" method="post">
+                            @csrf
                             <button class="btn btn-primary btn-primary:hover btn-block mt-4" href="#">Adquirir este curso</button>
                         </form>
                     @else

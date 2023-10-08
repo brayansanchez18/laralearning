@@ -40,7 +40,7 @@
         @if($course->price->value==0)
             <p class="my-2 text-gray-600  italic  font-bold text-center">¡GRATIS!</p>
         @else
-            <p class="my-2 text-gray-500 font-bold text-center">$US {{$course->price->value}}</p>
+            <p class="my-2 text-gray-500 font-bold text-center">US$ {{$course->price->value}}</p>
         @endif
         <!-- component -->
         <a href="{{route('courses.show', $course)}}" class="mt-4 btn btn-primary btn-block">
