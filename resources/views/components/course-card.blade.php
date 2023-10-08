@@ -1,10 +1,10 @@
 @props(['course'])
 
-<article class="card flex flex-col bg-white shadow-lg rounded overflow-hidden">
+<article class="card">
     <img class="h-36 w-full object-cover" src="{{ Storage::url($course->image->url) }}">
 
-    <div class="card-body flex-1 flex flex-col px-6 py-4">
-        <h1 class="card-title text-xl text-gray-700 mb-2 leading-6">
+    <div class="card-body flex-1 flex flex-col">
+        <h1 class="card-title">
             @can('enrolled', $course )
                 <i class="fas fa-check-circle text-green-600 -ml-5"></i>
             @endcan
@@ -43,7 +43,7 @@
             <p class="my-2 text-gray-500 font-bold text-center">$US {{$course->price->value}}</p>
         @endif
         <!-- component -->
-        <a href="{{route('courses.show', $course)}}" class="text-center bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
+        <a href="{{route('courses.show', $course)}}" class="mt-4 btn btn-primary btn-block">
             @can('enrolled', $course )
                 Seguir curso
             @else
