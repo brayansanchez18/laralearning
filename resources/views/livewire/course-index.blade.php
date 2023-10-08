@@ -30,7 +30,7 @@
             <div class="relative mr-4" x-data="{ open: false }">
                 <button class="px-4 text-gray-700 block h-12 rounded-lg overflow-hidden focus:outline-none bg-white shadow"
                 x-on:click="open = !open">
-                    <i class="fas fa-award text-sm mr-2"></i>
+                    <i class="fas fa-medal"></i>
                     Niveles
                     <i class="fas fa-angle-down text-sm ml-2"></i>
                 </button>
