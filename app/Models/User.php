@@ -94,7 +94,7 @@ class User extends Authenticatable
     // cursos enrolled = muchos usuarios pueden estar matrriculados a muchos cursos
     public function courses_enrolled()
     {
-        return $this->belongsToMany('App\Models\Course');
+        return $this->belongsToMany('App\Models\Course')->withTimestamps();
     }
 
     public function lessons()

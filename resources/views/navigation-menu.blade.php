@@ -13,8 +13,8 @@
             ],
             [
                 'name' => 'Mis Cursos',
-                'route'=> '#',
-                'active' => false,
+                'route'=> route('course.mycourses'),
+                'active' => request()->routeIs('course.mycourses'),
             ],
         ];
     @endphp
